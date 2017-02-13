@@ -1,0 +1,30 @@
+# Production Dockerfile for Django app
+
+FROM python:3.5.2-slim
+
+# Install system requirements
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends gcc gettext libpq-dev && \
+    rm -rf /var/lib/apt/lists/*
+
+# Create a directory for the logs
+RUN mkdir -p /var/log/no_design_slack_clone
+
+# Copy requirements
+COPY ./requirements /tmp/requirements
+# Install Python requirements
+RUN pip install -r /tmp/requirements/production.txt
+
+# Copy code
+COPY ./no_design_slack_clone /app
+COPY ./wait-for-it.sh /usr/bin/
+
+# Set the default directory where CMD will execute
+WORKDIR /app
+
+# Compile translations to .mo files
+# RUN python manage.py compilemessages
+
+# Run Gunicorn by default
+CMD gunicorn no_design_slack_clone.wsgi:application --workers 2 --bind :80

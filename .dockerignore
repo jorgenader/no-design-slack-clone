@@ -1,0 +1,4 @@
+no_design_slack_clone/node_modules/
+venv/
+
+.data-*/
