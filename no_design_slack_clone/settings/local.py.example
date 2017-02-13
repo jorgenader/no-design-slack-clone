@@ -1,0 +1,26 @@
+# For production, change this to import from settings.production
+from settings.base import *
+
+# Add proper database name, user and password here, if necessary
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'HOST': 'postgres',
+#         'NAME': 'no_design_slack_clone',
+#         'USER': 'no_design_slack_clone',
+#         'PASSWORD': 'no_design_slack_clone',
+#     }
+# }
+
+# For production, override SECRET_KEY
+
+
+# # For development:
+# # Debug toolbar
+# INSTALLED_APPS.append('debug_toolbar')
+# INTERNAL_IPS = ('127.0.0.1',)
+# MIDDLEWARE_CLASSES.append('debug_toolbar.middleware.DebugToolbarMiddleware')
+
+# Uncomment to send emails from your local machine.
+# EMAIL_HOST_PASSWORD = 'TODO (api key)'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

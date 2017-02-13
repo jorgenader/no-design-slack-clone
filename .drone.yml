@@ -1,0 +1,50 @@
+cache:
+  mount:
+    - .none
+    - .npm
+    - wheels
+
+build:
+  # TODO: make sure this is the right base image. Default is your selected Python version plus Node 6.x, which might or
+  #  might not exist depending on the selected Python version
+  image: thorgate/python3.5-node6
+  commands:
+    # Make npm use our cached directory for its cache, and create missing wheels
+    - npm config set cache $PWD/.npm
+    - pip wheel --wheel-dir=wheels --find-links=wheels -r requirements/local.txt -r requirements/production.txt
+
+    # Create virtualenv and install dependencies from wheels
+    - make -f MakeDrone venv
+    - . ./venv/bin/activate
+    - pip install --use-wheel --no-index --find-links=wheels -r requirements/local.txt -r requirements/production.txt
+    # Install node packages
+    - cd no_design_slack_clone
+    - npm install --silent --python=python2.7
+    # If you have tests that load front-end views, comment in the following line.
+    # - npm run build-quiet
+
+    # Run tests
+    - make -f MakeDrone settings
+    - make -f MakeDrone test
+    - make -f MakeDrone quality
+
+compose:
+  database:
+    image: postgres:9.5
+    environment:
+      - POSTGRES_USER=no_design_slack_clone
+      - POSTGRES_PASSWORD=no_design_slack_clone
+
+  redis:
+    image: redis:3.2-alpine
+
+notify:
+#  slack:
+#    webhook_url: https://hooks.slack.com/services/TODO
+#    channel: no_design_slack_clone
+#    username: drone
+#    when:
+#      branch: master
+#    template: |
+#      {{ uppercase build.status }} for {{ repo.full_name }} build #{{ build.number }}
+#      Commit {{ truncate build.commit 8 }} by {{ build.author }}; took {{ duration build.started_at build.finished_at }}

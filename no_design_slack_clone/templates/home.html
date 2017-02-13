@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    Hello world!
+{% endblock content %}
+
+{% block scripts %}{{ block.super }}
+    <script>
+        no_design_slack_clone.init();
+    </script>
+{% endblock %}
+

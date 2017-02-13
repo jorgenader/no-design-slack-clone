@@ -1,0 +1,16 @@
+# Based on Node 6.9 LTS image
+FROM node:6.9.1
+
+# Set the default directory where CMD will execute
+WORKDIR /app
+
+# Copy some utility files
+COPY ./no_design_slack_clone/.babelrc .
+COPY ./no_design_slack_clone/.eslintrc .
+COPY ./no_design_slack_clone/.eslintignore .
+# Install node requirements
+COPY ./no_design_slack_clone/package.json .
+RUN npm install
+
+# Set the default command to execute when creating a new container
+CMD npm run build
