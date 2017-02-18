@@ -1,0 +1,10 @@
+[include]
+.*/app/src/
+
+[ignore]
+.*/app/webpack/
+.*/node_modules/fbjs/.*
+.*/node_modules/flow-runtime/.*
+
+[options]
+module.system.node.resolve_dirname=slack_clone/node_modules
