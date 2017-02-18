@@ -21,7 +21,7 @@ function makeConfig(options) {
         path: path.resolve(app_root, 'build'),
         filename: options.filenameTemplate + '.js',
         publicPath: options.publicPath,
-        library: 'no_design_slack_clone',
+        library: 'chat',
     };
 
     return {

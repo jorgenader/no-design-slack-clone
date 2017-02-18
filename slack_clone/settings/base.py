@@ -24,13 +24,13 @@ ADMINS = (
     ('Thorgate admins', 'errors@thorgate.eu'),
 )
 MANAGERS = ADMINS
-EMAIL_SUBJECT_PREFIX = '[No Design Slack Clone] '  # subject prefix for managers & admins
+EMAIL_SUBJECT_PREFIX = '[Slack Clone] '  # subject prefix for managers & admins
 
-SESSION_COOKIE_NAME = 'no_design_slack_clone_ssid'
+SESSION_COOKIE_NAME = 'slack_clone_ssid'
 
 INSTALLED_APPS = [
     'accounts',
-    'no_design_slack_clone',
+    'slack_clone',
 
     'crispy_forms',
     'webpack_loader',
@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'channels',
+    'chat',
 ]
 
 
@@ -83,9 +86,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST': 'postgres',
-        'NAME': 'no_design_slack_clone',
-        'USER': 'no_design_slack_clone',
-        'PASSWORD': 'no_design_slack_clone',
+        'NAME': 'slack_clone',
+        'USER': 'slack_clone',
+        'PASSWORD': 'slack_clone',
     }
 }
 
@@ -99,6 +102,17 @@ CACHES = {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     }
+}
+
+# Channels settings
+CHANNEL_LAYERS = {
+   "default": {
+       "BACKEND": "asgi_redis.RedisChannelLayer",  # use redis backend
+       "CONFIG": {
+           "hosts": ['redis://redis:6379'],  # set redis address
+       },
+       "ROUTING": "slack_clone.routing.channel_routing",  # load routing from our routing.py file
+   },
 }
 
 
@@ -148,9 +162,9 @@ ALLOWED_HOSTS = []
 X_FRAME_OPTIONS = 'DENY'
 
 
-ROOT_URLCONF = 'no_design_slack_clone.urls'
+ROOT_URLCONF = 'slack_clone.urls'
 
-WSGI_APPLICATION = 'no_design_slack_clone.wsgi.application'
+WSGI_APPLICATION = 'slack_clone.wsgi.application'
 
 
 LOGIN_REDIRECT_URL = '/'

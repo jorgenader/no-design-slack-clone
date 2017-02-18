@@ -1,4 +1,3 @@
-
 from django.http import HttpResponseNotFound, JsonResponse, HttpResponseServerError
 from django.template import TemplateDoesNotExist, Engine, Context, loader
 from django.utils.translation import gettext as _

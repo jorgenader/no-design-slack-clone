@@ -18,8 +18,8 @@ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if not settings.DEBUG:
-    handler500 = 'no_design_slack_clone.views.server_error'
-    handler404 = 'no_design_slack_clone.views.page_not_found'
+    handler500 = 'slack_clone.views.server_error'
+    handler404 = 'slack_clone.views.page_not_found'
 
 if settings.DEBUG:
     try:

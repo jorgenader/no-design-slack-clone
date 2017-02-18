@@ -12,12 +12,12 @@ venv/
 
 .data-*/
 
-no_design_slack_clone/settings/local.py
-no_design_slack_clone/db.sqlite3
-no_design_slack_clone/app/webpack-stats.json
-no_design_slack_clone/app/build/
-no_design_slack_clone/assets/
+slack_clone/settings/local.py
+slack_clone/db.sqlite3
+slack_clone/app/webpack-stats.json
+slack_clone/app/build/
+slack_clone/assets/
 
-no_design_slack_clone/.cache
-no_design_slack_clone/.coverage
-no_design_slack_clone/cover/
+slack_clone/.cache
+slack_clone/.coverage
+slack_clone/cover/

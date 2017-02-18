@@ -4,9 +4,9 @@ from django.core import checks
 from tg_utils.checks import check_production_settings, check_sentry_config
 
 
-class No_design_slack_cloneConfig(AppConfig):
-    name = 'no_design_slack_clone'
-    verbose_name = "No Design Slack Clone"
+class SlackCloneConfig(AppConfig):
+    name = 'slack_clone'
+    verbose_name = "Slack Clone"
 
     def ready(self):
         # Import and register the system checks

@@ -1,4 +1,6 @@
-Django==1.8.16
+Django==1.10.5
+channels==1.0.3
+asgi_redis==1.0.0
 tg-utils==0.2.0
 psycopg2==2.6.2
 django-redis==4.5.0
