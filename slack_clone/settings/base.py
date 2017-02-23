@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'channels',
+    # demos
     'chat',
+    'cursor_demo',
 ]
 
 

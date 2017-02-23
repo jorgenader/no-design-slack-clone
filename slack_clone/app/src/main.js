@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 import Raven from 'raven-js';
 
 import HelloWorld from 'components/HelloWorld';
+import CursorApp from './containers/CursorApp';
 
 import configureStore from './configureStore';
 
@@ -24,6 +25,16 @@ if (process.env.NODE_ENV === 'production') {
     }
 }
 
+const store = configureStore(window.__initial_state__ || {});
+
+function initCursor() {
+    const elem = document.getElementById("cursor");
+    if (!elem) {
+        return;
+    }
+
+    ReactDOM.render(<Provider store={store}><CursorApp /></Provider>, elem);
+}
 
 function init() {
     const elem = document.getElementById("root");
@@ -31,10 +42,8 @@ function init() {
         return;
     }
 
-    const store = configureStore(window.__initial_state__ || {});
-
     ReactDOM.render(<Provider store={store}><HelloWorld /></Provider>, elem);
 }
 
 
-export {init}; // eslint-disable-line import/prefer-default-export
+export {init, initCursor};

@@ -18,7 +18,7 @@ const storeEnhancers = [];
 const sagaMiddleware = createSagaMiddleware();
 
 // create list of middleware to spread latter, makes easier way to add based on environment
-const middlewares = [sagaMiddleware];
+const middlewares = [];
 
 // if not production, add redux logger
 if (process.env.NODE_ENV !== 'production') {
@@ -35,7 +35,7 @@ export default function configureStore(initialState = {}) {
     const store = createStore(rootReducer, initialState, composeEnhancers(...storeEnhancers));
 
     // start watchers with saga middleware
-    sagaMiddleware.run(rootSaga);
+    // sagaMiddleware.run(rootSaga);
 
     return store;
 }

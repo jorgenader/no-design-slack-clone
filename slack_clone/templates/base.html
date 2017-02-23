@@ -61,6 +61,9 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+                    <li class="active"><a href="{% url 'cursor' %}">{% trans "Cursor" %}</a></li>
+                    <li class="active"><a href="{% url 'binding' %}">{% trans "Binding" %}</a></li>
+                    <li class="active"><a href="{% url 'chat' %}">{% trans "Chat" %}</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if request.user.is_authenticated %}

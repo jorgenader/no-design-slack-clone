@@ -11,6 +11,11 @@ urlpatterns = [
     url(r'', include('accounts.urls')),
     url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
 
+    # demos
+    url(r'^cursor/$', TemplateView.as_view(template_name='cursor.html'), name='cursor'),
+    url(r'^binding/$', TemplateView.as_view(template_name='binding.html'), name='binding'),
+    url(r'^chat/$', TemplateView.as_view(template_name='chat.html'), name='chat'),
+
     url(r'^tagauks/', include(admin.site.urls)),
 ]
 
