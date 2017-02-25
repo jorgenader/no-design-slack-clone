@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'channels',
     # demos
     'chat',
+    'chat_simple',
     'cursor_demo',
 ]
 

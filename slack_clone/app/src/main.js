@@ -5,8 +5,10 @@ import Raven from 'raven-js';
 
 import HelloWorld from 'components/HelloWorld';
 import CursorApp from './containers/CursorApp';
+import ChatWindow from './containers/ChatWindow';
 
 import configureStore from './configureStore';
+
 
 // Install Raven in production envs
 if (process.env.NODE_ENV === 'production') {
@@ -25,9 +27,8 @@ if (process.env.NODE_ENV === 'production') {
     }
 }
 
-const store = configureStore(window.__initial_state__ || {});
-
 function initCursor() {
+    const store = configureStore();
     const elem = document.getElementById("cursor");
     if (!elem) {
         return;
@@ -36,14 +37,24 @@ function initCursor() {
     ReactDOM.render(<Provider store={store}><CursorApp /></Provider>, elem);
 }
 
+function initSimpleChat() {
+    const store = configureStore({});
+    const elem = document.getElementById("simple-chat");
+    if (!elem) {
+        return;
+    }
+
+    ReactDOM.render(<Provider store={store}><ChatWindow /></Provider>, elem);
+}
+
 function init() {
     const elem = document.getElementById("root");
     if (!elem) {
         return;
     }
 
-    ReactDOM.render(<Provider store={store}><HelloWorld /></Provider>, elem);
+    ReactDOM.render(<HelloWorld />, elem);
 }
 
 
-export {init, initCursor};
+export {init, initCursor, initSimpleChat};

@@ -21,6 +21,21 @@
         "indent": ["error", 4, {"SwitchCase": 1}],
         "react/jsx-indent": ["error", 4],
         "react/jsx-indent-props": ["error", 4],
+        "react/sort-comp": [
+            1,
+            {
+                "order": [
+                    "static-methods",
+                    "/^props$/",
+                    "/^state$/",
+                    "/^defaultProps$/",
+                    "lifecycle",
+                    "/^on.+$/",
+                    "everything-else",
+                    "render",
+                ],
+            },
+        ],
 
         // JSX files use .js extension
         "react/jsx-filename-extension": ["error", {"extensions": [".js"]}],

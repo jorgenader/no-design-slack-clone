@@ -7,7 +7,7 @@ import Channel from '../components/Channel';
 import {getChannelList} from '../selectors';
 
 type ChannelType = {
-    id: number,
+    id: number | string,
     label: string,
     name: string,
 };

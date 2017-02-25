@@ -6,14 +6,14 @@ type ChannelPropType = {label: string, onClick: (number) => void};
 type ChannelStateType = {hover: boolean};
 
 export default class Channel extends React.Component {
+    props: ChannelPropType;
+    state: ChannelStateType;
+
     constructor(props) {
         super(props);
 
         this.state = {hover: false};
     }
-
-    state: ChannelStateType;
-    props: ChannelPropType;
 
     render() {
         const channelClasses = classnames('channel', {'channel--hover': this.state.hover});

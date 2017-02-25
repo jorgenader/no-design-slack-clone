@@ -14,7 +14,7 @@ type CursorAppProps = {
 
 const CursorApp = ({name, onSetName}: CursorAppProps) => {
     if (!name) {
-        return (<div><CursorList /><NameInput onSet={onSetName} /></div>);
+        return (<div><CursorList /><NameInput text="Set Name" onSet={onSetName} /></div>);
     }
     return (
         <div>

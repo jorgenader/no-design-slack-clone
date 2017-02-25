@@ -13,7 +13,7 @@ urlpatterns = [
 
     # demos
     url(r'^cursor/$', TemplateView.as_view(template_name='cursor.html'), name='cursor'),
-    url(r'^binding/$', TemplateView.as_view(template_name='binding.html'), name='binding'),
+    url(r'^simple/$', TemplateView.as_view(template_name='simple_chat.html'), name='simple_chat'),
     url(r'^chat/$', TemplateView.as_view(template_name='chat.html'), name='chat'),
 
     url(r'^tagauks/', include(admin.site.urls)),

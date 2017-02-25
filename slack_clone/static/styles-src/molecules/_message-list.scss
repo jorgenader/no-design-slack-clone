@@ -1,0 +1,14 @@
+.message--list {
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.message--input {
+    textarea {
+        resize: none;
+    }
+
+    button {
+        padding: 25px;
+    }
+}

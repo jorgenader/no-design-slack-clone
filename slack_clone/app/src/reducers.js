@@ -11,6 +11,15 @@ const name = (state = '', action) => {
     }
 };
 
+const messages = (state = [], action) => {
+    switch (action.type) {
+        case actions.ADD_MESSAGE:
+            return [{...action.data}, ...state];
+        default:
+            return state;
+    }
+};
+
 const cursors = (state = {}, action) => {
     switch (action.type) {
         case actions.CURSOR_SET_POSITION:
@@ -20,4 +29,4 @@ const cursors = (state = {}, action) => {
     }
 };
 
-export default combineReducers({name, cursors});
+export default combineReducers({name, cursors, messages});
