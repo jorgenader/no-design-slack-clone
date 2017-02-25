@@ -20,6 +20,7 @@ class ChatWindow extends React.Component {
     constructor(props) {
         super(props);
 
+        this.service = null;
         this.api = new Resource('/api/v1/simple/messages');
         this.api.fetch().then((data: Array<Object>) => data.reverse().forEach(msg => this.onReceiveMessage(msg)));
         Connector(
@@ -42,6 +43,9 @@ class ChatWindow extends React.Component {
     }
 
     onSetName(name) {
+        if (!this.service) {
+            return;
+        }
         this.props.dispatch(setName(name));
         this.service.send('join', {user: name});
     }

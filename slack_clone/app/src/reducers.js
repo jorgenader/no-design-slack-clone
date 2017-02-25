@@ -14,7 +14,7 @@ const name = (state = '', action) => {
 const messages = (state = [], action) => {
     switch (action.type) {
         case actions.ADD_MESSAGE:
-            return [{...action.data}, ...state];
+            return [...state, {...action.data}];
         default:
             return state;
     }
