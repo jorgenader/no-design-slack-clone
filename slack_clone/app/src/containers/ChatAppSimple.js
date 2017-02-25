@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Resource} from 'tg-resources';
 
 import {Connector} from '../service/websocket_service';
 
@@ -19,6 +20,8 @@ class ChatWindow extends React.Component {
     constructor(props) {
         super(props);
 
+        this.api = new Resource('/api/v1/simple/messages');
+        this.api.fetch().then((data: Array<Object>) => data.reverse().forEach(msg => this.onReceiveMessage(msg)));
         Connector(
             'simple/stream/',
             ::this.onError, ::this.onReceiveMessage).then((service) => {
@@ -46,25 +49,17 @@ class ChatWindow extends React.Component {
     render() {
         const {name} = this.props;
 
-        if (!name) {
-            return (
-                <div style={{width: '400px'}}>
-                    <NameInput text="Set name" onSet={input => this.onSetName(input)} />
-                </div>
-            );
-        }
-
         return (
             <div>
-                <div className="col-md-4">
-                    {/* render user list */}
-                </div>
-                <div className="col-md-8">
+                <div className="col-md-12">
                     <div className="row">
                         <MessageList />
                     </div>
                     <div className="row message--input">
-                        <NameInput multiline text="Send" onSet={text => this.onSendMessage(text)} />
+                        {name ?
+                            <NameInput multiline text="Send" onSet={text => this.onSendMessage(text)} /> :
+                            <NameInput text="Set name" onSet={input => this.onSetName(input)} />
+                        }
                     </div>
                 </div>
             </div>

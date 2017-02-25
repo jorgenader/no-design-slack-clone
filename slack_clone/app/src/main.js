@@ -5,7 +5,7 @@ import Raven from 'raven-js';
 
 import HelloWorld from 'components/HelloWorld';
 import CursorApp from './containers/CursorApp';
-import ChatWindow from './containers/ChatWindow';
+import ChatAppSimple from './containers/ChatAppSimple';
 
 import configureStore from './configureStore';
 
@@ -44,7 +44,7 @@ function initSimpleChat() {
         return;
     }
 
-    ReactDOM.render(<Provider store={store}><ChatWindow /></Provider>, elem);
+    ReactDOM.render(<Provider store={store}><ChatAppSimple /></Provider>, elem);
 }
 
 function init() {

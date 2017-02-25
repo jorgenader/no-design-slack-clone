@@ -8,13 +8,12 @@ from .models import ChatMessage
 
 
 def msg_consumer(message):
+    user = message.content['user']
+    text = message.content['text']
     # Save to model
-    # ChatMessage.objects.create(
-    #     user=message.content['user'],
-    #     message=message.content['text'],
-    # )
+    chat = ChatMessage.objects.create(user=user, message=text)
     # Broadcast to listening client in the room
-    response = dict(id=str(uuid.uuid4()), user=message.content['user'], message=message.content['text'])
+    response = dict(id=chat.id, user=user, message=text)
     Group('chat').send({'text': json.dumps(response)})
 
 
@@ -47,7 +46,6 @@ def ws_message(message):
 @channel_session_user
 def ws_disconnect(message):
     user = message.channel_session.get('user')
-    print(user)
     if user:
         Channel('chat-messages').send({'type': 'leave', 'user': user})
     Group('chat').discard(message.reply_channel)
