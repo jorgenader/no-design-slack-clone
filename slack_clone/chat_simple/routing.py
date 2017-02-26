@@ -1,7 +1,7 @@
 from channels import route
 from . import consumers
 
-routes = [
+chat_simple_routes = [
     # WS routing for communicating with clients
     route("websocket.connect", consumers.ws_connect),
     route("websocket.receive", consumers.ws_message),

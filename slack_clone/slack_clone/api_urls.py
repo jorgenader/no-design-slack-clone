@@ -9,5 +9,6 @@ router = DefaultRouter(trailing_slash=False)
 
 urlpatterns = [
     url(r'^simple/', include('chat_simple.api.urls')),
+    url(r'^slack/', include('chat.api.urls')),
     url(r'^', include(router.urls)),
 ]

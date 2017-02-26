@@ -1,13 +1,11 @@
 from channels import include
-from chat.routing import routes
-from chat_simple.routing import routes as chat_simple_routes
 
 
 channel_routing = [
-    include(routes, path=r'^/chat'),
-    include(chat_simple_routes, path=r'^/simple/stream/$'),
-    include(routes, path=r'^/chat'),
+    include('chat.routing.chat_routing', path=r'^/chat/stream/$'),
+    include('chat.routing.chat_simple_routes', path=r'^/simple/stream/$'),
 
-    # include internal routings
-    include("chat_simple.routing.internal_routing"),
+    # include internal routing's
+    include('chat.routing.internal_routing'),
+    include('chat_simple.routing.internal_routing'),
 ]

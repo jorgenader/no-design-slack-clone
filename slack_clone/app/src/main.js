@@ -6,6 +6,7 @@ import Raven from 'raven-js';
 import HelloWorld from 'components/HelloWorld';
 import CursorApp from './containers/CursorApp';
 import ChatAppSimple from './containers/ChatAppSimple';
+import ChatApp from './containers/ChatApp';
 
 import configureStore from './configureStore';
 
@@ -37,6 +38,16 @@ function initCursor() {
     ReactDOM.render(<Provider store={store}><CursorApp /></Provider>, elem);
 }
 
+function initChat() {
+    const store = configureStore();
+    const elem = document.getElementById("chat");
+    if (!elem) {
+        return;
+    }
+
+    ReactDOM.render(<Provider store={store}><ChatApp /></Provider>, elem);
+}
+
 function initSimpleChat() {
     const store = configureStore({});
     const elem = document.getElementById("simple-chat");
@@ -57,4 +68,4 @@ function init() {
 }
 
 
-export {init, initCursor, initSimpleChat};
+export {init, initCursor, initChat, initSimpleChat};

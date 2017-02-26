@@ -42,6 +42,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(_('active'), default=True)
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
+    default_room = models.ForeignKey('chat.Room', default=None)
+
     USERNAME_FIELD = 'email'
 
     objects = UserManager()
