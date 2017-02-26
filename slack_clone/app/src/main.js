@@ -35,7 +35,7 @@ function initCursor() {
         return;
     }
 
-    ReactDOM.render(<Provider store={store}><CursorApp /></Provider>, elem);
+    ReactDOM.render(<Provider store={store}><CursorApp counter={100} /></Provider>, elem);
 }
 
 function initChat() {

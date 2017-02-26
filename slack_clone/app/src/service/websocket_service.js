@@ -1,3 +1,5 @@
+import WebSocket from 'reconnecting-websocket';
+
 export class WebSocketService {
     constructor(path, onError = null, onMessage = null) {
         this.onMessage = onMessage || this.onMessage;

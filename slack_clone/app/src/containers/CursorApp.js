@@ -1,33 +1,15 @@
 import React from 'react';
-import {connect} from 'react-redux';
 
-import CursorList from './CursorList';
-import Capture from './Capture';
-import NameInput from '../components/NameInput';
-
-import {setName} from '../actions';
+import Counter from '../components/Counter';
 
 type CursorAppProps = {
-    name: string,
-    onSetName: () => void,
+    count: number,
 };
 
-const CursorApp = ({name, onSetName}: CursorAppProps) => {
-    if (!name) {
-        return (<div><CursorList /><NameInput text="Set Name" onSet={onSetName} /></div>);
-    }
-    return (
-        <div>
-            <Capture />
-            <CursorList />
-        </div>
-    );
-};
+const CursorApp = ({count}: CursorAppProps) => (
+    <div>
+        {[...Array.from(new Array(6), (x, i) => i)].map(id => <Counter key={id} id={id} />)}
+    </div>
+);
 
-export default connect(
-    state => ({
-        name: state.name,
-    }),
-    dispatch => ({
-        onSetName: name => dispatch(setName(name)),
-    }))(CursorApp);
+export default CursorApp;

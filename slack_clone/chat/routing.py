@@ -9,7 +9,7 @@ chat_routing = [
 ]
 
 internal_routing = [
-    route('chat-messages', consumers.msg_consumer, command=r'^message$'),
-    route('chat-messages', consumers.join_consumer, command=r'^join$'),
-    route('chat-messages', consumers.leave_consumer, command=r'^leave$'),
+    # route('chat-messages', consumers.msg_consumer, command=r'^message$'),
+    # route('chat-messages', consumers.join_consumer, command=r'^join$'),
+    # route('chat-messages', consumers.leave_consumer, command=r'^leave$'),
 ]
