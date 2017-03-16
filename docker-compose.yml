@@ -10,7 +10,7 @@ services:
         ports:
             - "8000:80"
         volumes:
-            - "./no_design_slack_clone:/app"
+            - "./slack_clone:/app"
             - ".data-media:/files/media"
         environment:
             - PYTHONUNBUFFERED=0
@@ -26,8 +26,8 @@ services:
             context: .
             dockerfile: Dockerfile-node
         volumes:
-            - "./no_design_slack_clone/app:/app/app"
-            - "./no_design_slack_clone/static:/app/static:ro"
+            - "./slack_clone/app:/app/app"
+            - "./slack_clone/static:/app/static:ro"
         command: npm run dev
 
     postgres:
@@ -39,8 +39,8 @@ services:
         volumes:
             - ".data-postgres:/var/lib/postgresql/data"
         environment:
-            POSTGRES_USER: no_design_slack_clone
-            POSTGRES_PASSWORD: no_design_slack_clone
+            POSTGRES_USER: slack_clone
+            POSTGRES_PASSWORD: slack_clone
 
     redis:
         image: redis:3.2-alpine

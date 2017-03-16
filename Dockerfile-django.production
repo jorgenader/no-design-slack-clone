@@ -27,4 +27,4 @@ WORKDIR /app
 # RUN python manage.py compilemessages
 
 # Run Gunicorn by default
-CMD gunicorn no_design_slack_clone.wsgi:application --workers 2 --bind :80
+CMD daphne -b 0.0.0.0 -p 80 slack_clone.asgi:channel_layer
